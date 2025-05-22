@@ -216,25 +216,23 @@
     </footer>
     <script>
         function sortear() {
-            const nome = document.getElementById('nome').value;            const nome = document.getElementById('nome').value;
+            const nome = document.getElementById('nome').value;
             let numeroSorteado;
 
-            if (nome.toLowerCase() === 'jamal') {mal') {
-                // 90% de chance de tirar 1, 10% de 2 a 16ar 1, 10% de 2 a 16
-                if (Math.random() < 0.9) {.random() < 0.9) {
+            if (nome.toLowerCase() === 'jamal') {
+                // 90% de chance de tirar 1, 10% de 2 a 16
+                if (Math.random() < 0.9) {
                     numeroSorteado = 1;
-                } else { else {
-                    numeroSorteado = Math.floor(Math.random() * 15) + 2; // entre 2 e 16numeroSorteado = Math.floor(Math.random() * 15) + 2; // entre 2 e 16
+                } else {
+                    numeroSorteado = Math.floor(Math.random() * 15) + 2; // entre 2 e 16
                 }
             } else {
-                // Sorteio normal entre 1 e 64   // Sorteio normal entre 1 e 64
-                numeroSorteado = Math.floor(Math.random() * 64) + 1;                numeroSorteado = Math.floor(Math.random() * 64) + 1;
+                // Sorteio normal entre 1 e 64
+                numeroSorteado = Math.floor(Math.random() * 64) + 1;
             }
 
-            document.getElementById('resultado').innerText = `O número sorteado para ${nome} é: ${numeroSorteado}`;ocument.getElementById('resultado').innerText = `O número sorteado para ${nome} é: ${numeroSorteado}`;
-        } }
-    </script>cript>
-
-
-</html></body></body>
+            document.getElementById('resultado').innerText = `O número sorteado para ${nome} é: ${numeroSorteado}`;
+        }
+    </script>
+</body>
 </html>
