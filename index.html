@@ -218,6 +218,53 @@
         <span>Feito com <span style="color:#ee1515;">❤</span> no mundo Pokémon</span>
     </footer>
     <script>
+        // Lista de tipos de Pokébolas
+        const tiposPokebolas = [
+            "Poké Bola",
+            "Great Ball",
+            "Ultra Ball",
+            "Master Ball",
+            "Quick Ball",
+            "Repeat Ball",
+            "Timer Ball",
+            "Dusk Ball",
+            "Luxury Ball",
+            "Net Ball",
+            "Nest Ball",
+            "Dive Ball",
+            "Premier Ball",
+            "Heal Ball",
+            "Friend Ball",
+            "Level Ball",
+            "Love Ball",
+            "Moon Ball",
+            "Heavy Ball",
+            "Fast Ball",
+            "Dream Ball",
+            "Beast Ball",
+            "Safari Ball",
+            "Sport Ball",
+            "Cherish Ball"
+        ];
+
+        function sortearTipoPokebola(qtd, nome) {
+            let tipos = [];
+            const nomeLower = nome.toLowerCase();
+            if (nomeLower === 'jamal' || nomeLower === 'breno') {
+                // Para Jamal/Breno: 90% Poké Bola, 10% Great Ball
+                for (let i = 0; i < qtd; i++) {
+                    tipos.push(Math.random() < 0.9 ? "Poké Bola" : "Great Ball");
+                }
+            } else {
+                // Normal: aleatório entre todos os tipos
+                for (let i = 0; i < qtd; i++) {
+                    const tipo = tiposPokebolas[Math.floor(Math.random() * tiposPokebolas.length)];
+                    tipos.push(tipo);
+                }
+            }
+            return tipos;
+        }
+
         function sortear() {
             const nome = document.getElementById('nome').value;
             let numeroSorteado;
@@ -234,7 +281,21 @@
                 numeroSorteado = Math.floor(Math.random() * 64) + 1;
             }
 
-            document.getElementById('resultado').innerText = `O número sorteado para ${nome} é: ${numeroSorteado}`;
+            // Sorteia os tipos das pokébolas conforme o nome
+            const tipos = sortearTipoPokebola(numeroSorteado, nome);
+
+            // Conta quantas de cada tipo
+            const tiposCount = {};
+            tipos.forEach(tipo => {
+                tiposCount[tipo] = (tiposCount[tipo] || 0) + 1;
+            });
+
+            // Gera a string do resultado
+            let tiposStr = Object.entries(tiposCount)
+                .map(([tipo, qtd]) => `${qtd}x ${tipo}`)
+                .join(', ');
+
+            document.getElementById('resultado').innerText = `O número sorteado para ${nome} é: ${numeroSorteado}\nTipos: ${tiposStr}`;
         }
     </script>
 </body>
